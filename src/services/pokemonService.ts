@@ -7,7 +7,7 @@ export const pokemonService = {
       const response = await axios.get(`${config.pokeAPI}/pokemon?limit=150&offset=0`);
       return response.data.results;
     } catch (error) {
-      throw new Error('Failed to fetch Pokémon');
+      throw new Error('Failed to fetch Pokémons');
     }
   },
 
@@ -17,6 +17,14 @@ export const pokemonService = {
       return response.data;
     } catch (error) {
       throw new Error('Failed to fetch Pokémon');
+    }
+  },
+  getEvolution: async (pokemonId: string) => {
+    try {
+      const response = await axios.get(`${config.pokeAPI}/evolution-chain/${pokemonId}`);      
+      return response.data;
+    } catch (error) {
+      throw new Error('Failed to fetch Pokémon Evolution');
     }
   },
 };

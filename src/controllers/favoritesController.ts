@@ -18,7 +18,7 @@ export const getFavorites = async (req: Request, res: Response, next: NextFuncti
 export const addFavorite = async (req: Request, res: Response, next: NextFunction) => {
   const { name, url, userId } = req.body;
   try {
-    const added = await favoriteService.add(userId, { name, url });
+    const added = await favoriteService.add(userId, { name });
     res.status(201).json(added);
     if (!added) {
       throw createError('Error adding to favorite pokemon', 404);
@@ -35,7 +35,7 @@ export const removeFavorite = async (req: Request, res: any, next: NextFunction)
     if (!removed) {
       return res.json({ message: 'Pokemon not in user favorites' });
     }
-    res.json({ message: 'Error deleting pokemon' });
+    res.json({ message: 'Success deleting pokemon' });
   } catch (error) {
     next(error);
 

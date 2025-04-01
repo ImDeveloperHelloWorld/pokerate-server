@@ -30,3 +30,19 @@ export const getOnePokemon = async (req: Request, res: any, next: NextFunction) 
 
   }
 };
+
+export const getPokemonEvolution = async (req: Request, res: any, next: NextFunction) => {
+  const { pokemonId } = req.params;  
+  try {
+    const pokemon = await pokemonService.getEvolution(pokemonId);  
+
+    if (!pokemon) {
+      throw createError('Error fetching pokemon Evolution', 404);
+    }
+    res.json(pokemon);
+  } catch (error) {
+    next(error);
+    
+
+  }
+};

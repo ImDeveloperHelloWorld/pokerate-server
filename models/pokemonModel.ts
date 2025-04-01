@@ -2,13 +2,11 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 interface IFavoritePokemon extends Document {
   name: string;
-  url: string;
   userId: string;
 }
 
 const favoritePokemonSchema: Schema = new Schema({
   name: { type: String, required: true },
-  url: { type: String, required: true },
   userId: { type: String, required: true },
 });
 

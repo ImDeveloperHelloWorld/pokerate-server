@@ -5,10 +5,9 @@ export const favoriteService = {
     return FavoritePokemon.find({ userId });
   },
 
-  add: async (userId: string, pokemon: { name: string; url: string }) => {
+  add: async (userId: string, pokemon: { name: string;}) => {
     const newFavorite = new FavoritePokemon({
       name: pokemon.name,
-      url: pokemon.url,
       userId,
     });
     return await newFavorite.save();
