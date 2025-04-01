@@ -7,7 +7,7 @@ export const config = {
   pokeAPI: 'https://pokeapi.co/api/v2',
 };
 
-var whitelist = ['https://imaginative-cheesecake-6d73f7.netlify.app/']
+var whitelist = ['https://imaginative-cheesecake-6d73f7.netlify.app']
 
 export const corsOptions = {
   origin: function (origin: any, callback: any) {
