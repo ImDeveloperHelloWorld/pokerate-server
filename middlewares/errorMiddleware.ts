@@ -20,7 +20,7 @@ const errorMiddleware = (err: AppError, req: Request, res: Response, next: NextF
 
   res.status(err.statusCode || 500).json({
     status: 'error',
-    message: 'Something went wrong! Please try again later.',
+    message: err.message || 'Something went wrong! Please try again later.',
   });
 };
 

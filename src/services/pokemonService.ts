@@ -2,9 +2,11 @@ import axios from 'axios';
 import { config } from '../../config/config';
 
 export const pokemonService = {
-  getAll: async () => {
+  getAll: async (offset: string) => {
     try {
-      const response = await axios.get(`${config.pokeAPI}/pokemon?limit=150&offset=0`);
+
+      const response = await axios.get(`${config.pokeAPI}/pokemon?limit=20&offset=${offset}`);
+      
       return response.data.results;
     } catch (error) {
       throw new Error('Failed to fetch Pokémons');

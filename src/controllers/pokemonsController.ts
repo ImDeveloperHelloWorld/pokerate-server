@@ -4,7 +4,9 @@ import { createError } from '../../middlewares/errorMiddleware';
 
 export const getAllPokemons = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const pokemons = await pokemonService.getAll();
+    const offset = (req.query.offset as string);
+    
+    const pokemons = await pokemonService.getAll(offset);
     res.json(pokemons);
     if (!pokemons) {
       throw createError('Error fetching pokemons', 404);
@@ -34,15 +36,13 @@ export const getOnePokemon = async (req: Request, res: any, next: NextFunction) 
 export const getPokemonEvolution = async (req: Request, res: any, next: NextFunction) => {
   const { pokemonId } = req.params;  
   try {
-    const pokemon = await pokemonService.getEvolution(pokemonId);  
+    const evolution = await pokemonService.getEvolution(pokemonId);  
 
-    if (!pokemon) {
+    if (!evolution) {
       throw createError('Error fetching pokemon Evolution', 404);
     }
-    res.json(pokemon);
+    res.json(evolution);
   } catch (error) {
     next(error);
-    
-
   }
 };
