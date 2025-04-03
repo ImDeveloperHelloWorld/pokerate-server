@@ -5,7 +5,7 @@ export const pokemonService = {
   getAll: async (offset: string) => {
     try {
 
-      const response = await axios.get(`${config.pokeAPI}/pokemon?limit=15&offset=${offset}`);
+      const response = await axios.get(`${config.pokeAPI}/pokemon?limit=40&offset=${offset}`);
       
       return response.data.results;
     } catch (error) {
